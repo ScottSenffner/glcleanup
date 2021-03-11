@@ -14,7 +14,7 @@ for fname in glob.glob ('*.csv'):
     df1=pd.read_csv(fname, encoding='iso-8859-1', header=None)
 # extracts the file extension ".csv"
     fname = fname.rsplit('.', 1)[0]
-# (was the old test file location - df1=pd.read_excel("C:\\Users\\ssenffner\\AS400 Export\\GLACT100T-test.xlsx", header=None)
+# (was the old test file location - df1=pd.read_excel("C:\\temp\", header=None)
     df1.columns=['JDCORP','JDYM','JDGC','JDLOC','JDGL#','JDSR','JDBAT','JDSEQ','JDLN','JHMC','JDRDT','JHDES','JHDBF','JHDBN','JHREF','JDDES','JDAMT','JDCKNO','JDCKDT','JDDBF','JDDBN','JDRGRP','JDRSTS','JDRB','JDICT','JDCKT','JHSTS','JDSTS']
 # Creates a copy of the old date for creating a batch number
     df1['JDYM-O'] = df1['JDYM']
@@ -42,6 +42,6 @@ for fname in glob.glob ('*.csv'):
     df1 = df1.rename(columns={'JDYM': 'Period ID', 'JDSR': 'SourceDoc', 'JDGC': 'Account', 'JHDES': 'Reference', 'JDDES': 'Description', 'JDAMT': 'Amount', 'JDCKNO': 'Check No', 'JDCKDT': 'Transaction Date', 'JDDBN':'Vendor No', 'JDCK': 'Check Type' })
 # inserts column for currency
     df1.insert(6, 'CurrencyID', 'Z-US$')
-    df1.to_csv(fname + '-ready.csv', index=False)  #'C:\\Users\\Scott\\Desktop\\as400 exports\\' +
+    df1.to_csv(fname + '-ready.csv', index=False)
     print('Completed Successfully' + " " + fname)
 print('Completed Successfully')
